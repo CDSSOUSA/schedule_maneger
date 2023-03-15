@@ -1179,6 +1179,7 @@ if (deleteScheduleForm) {
         const dataForm = new FormData(deleteScheduleForm);
 
         await axios.post(`${URL_BASE}/horario/api/del`, dataForm, {
+            
             headers: {
                 "Content-Type": "application/json"
             }
