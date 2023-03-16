@@ -31,7 +31,7 @@ if (idTeacherStorege == null) {
 //         .catch(error => console.log(error))
 // }
 
-const URL_BASE = 'http://localhost/gerenciador-horario/public';
+
 
 
 listDisciplinesTeacher(localStorage.getItem('idTeacher'));
@@ -86,6 +86,7 @@ function list(data) {
 
 function listRowDisciplines(data, idTeacher) {
     let row = '';
+    let amount = 0;
     
     if (data.length >= 1) {
         console.log('aqui tem data');
@@ -111,7 +112,7 @@ function listRowDisciplines(data, idTeacher) {
     <a class="btn btn-link text-dark text-gradient px-3 mb-0" href="#" onclick="addAllocationTeacher(${idTeacher})" data-bs-toggle="modal" data-bs-target="#addAllocationTeacherModal"><i class="fas fa-plus me-2" aria-hidden="true"></i>Disponibilidade</a>
     
     `
-
+    amount =+ e.amount + amount
         })
     } else {
         row = `
@@ -125,6 +126,8 @@ function listRowDisciplines(data, idTeacher) {
         document.getElementById('disciplineOption').innerHTML = `<a class="btn btn-link text-dark px-3 mb-0" href="#" onclick="addTeacherDiscipline(${idTeacher})"  data-bs-toggle="modal" data-bs-target="#addTeacherDisciplineModal"><i class="fas fa-plus text-dark me-2" aria-hidden="true"></i>Disciplina</a>`
 
     }
+
+    document.getElementById('totalAmount').textContent = writeZero(amount)
 
     return row;
 }
@@ -165,7 +168,7 @@ const listAllocationTeacherDiscipline = async (idTeacher) => {
         .then(response => {
             const data = response.data;
 
-            console.log(data);
+            console.log(data.length);
             let total = data.length;
             if (data) {
                 //editModal.show();
@@ -175,12 +178,23 @@ const listAllocationTeacherDiscipline = async (idTeacher) => {
                 //document.getElementById('id_discipline').value = data[0].description
                 //document.getElementById('numeroAulas').value = data[0].amount
                 //document.getElementById('corDestaque').value = data[0].color
-
+                document.getElementById('totalAllocation').textContent = `${writeZero(Number(total))} de`
+               
+                document.getElementById('btn_print').setAttribute('onclick', `printReportTeacher(${idTeacher})`)
+                   
                 //document.getElementById('totalAllocation').value = total;
                 //getDataTeacher(id, 'nameDisciplineAllocation');
                 //getDataTeacherDiscipline(id);
                 //document.getElementById('btn_print').setAttribute('onclick', `printReportTeacher(${id})`)
 
+            } 
+            
+            if(data.length == 0 ){
+                document.getElementById('btn_print').classList.add('disabled')
+            }
+            else {
+                document.getElementById('btn_print').classList.remove('disabled')
+                
             }
         })
         .catch(error => console.log(error))
@@ -383,7 +397,7 @@ function addTeacher() {
 
     addTeacherForm.reset();
 
-    $('#addTeacherModal').on('shown.bs.modal', function () {
+    $('#addTeacherModal').on('shown.bs.modal', function () {      
         $('#nameTeacherAdd').trigger('focus');   
     });
 
@@ -399,7 +413,7 @@ if (addTeacherForm) {
         e.preventDefault();
         //load();
         const dataForm = new FormData(addTeacherForm);
-        await axios.post(`${URL_BASE}/teacher/create`, dataForm, {
+        await axios.post(`${URL_BASE}/${URIS.teacher.create}`, dataForm, {
             headers: {
                 "Content-Type": "application/json"
             }
@@ -480,7 +494,7 @@ if (editTeacherForm) {
     editTeacherForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         const dataForm = new FormData(editTeacherForm);
-        await axios.post(`${URL_BASE}/teacher/update`, dataForm, {
+        await axios.post(`${URL_BASE}/${URIS.teacher.update}`, dataForm, {
             headers: {
                 "Content-Type": "application/json"
             }
@@ -1056,7 +1070,7 @@ if (deleteTeacherForm) {
         e.preventDefault();
         const dataForm = new FormData(deleteTeacherForm);
 
-        await axios.post(`${URL_BASE}/teacher/del`, dataForm, {
+        await axios.post(`${URL_BASE}/${URIS.teacher.delete}`, dataForm, {
             headers: {
                 "Content-Type": "application/json"
             }
@@ -1178,7 +1192,7 @@ if (deleteScheduleForm) {
 
         const dataForm = new FormData(deleteScheduleForm);
 
-        await axios.post(`${URL_BASE}/horario/api/del`, dataForm, {
+        await axios.post(`${URL_BASE}/${URIS.schedule.delete}`, dataForm, {
             
             headers: {
                 "Content-Type": "application/json"
@@ -1221,4 +1235,11 @@ async function getSeries(id, locale) {
             document.getElementById(locale).innerText = `${response.data[0].description}º${response.data[0].classification} - ${convertShift(response.data[0].shift)}`
         })
         .catch(error => console.log(error))
+}
+
+function printReportTeacher(id) 
+{
+    //listAllocationModal.hide();
+
+    window.open(`${URL_BASE}/report/teacher/${id}`);
 }

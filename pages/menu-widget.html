@@ -1,0 +1,155 @@
+<div class="row">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="numbers">
+                            <div class="dropdown">
+                                <button class="btn bg-gradient-primary dropdown-toggle" type="button"
+                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>Disciplinas </span>
+
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="javascript:;">Matemática</a></li>
+                                    <li><a class="dropdown-item" href="javascript:;">História</a></li>
+                                    <li><a class="dropdown-item" href="javascript:;">Geografia</a></li>
+                                </ul>
+                            </div>
+                            <h5 class="font-weight-bolder mb-0">
+                                09
+                                <span class="text-success text-sm font-weight-bolder">+55%</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <i class="fas fa-book text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="numbers">
+                            <div class="dropdown">
+                                <button class="btn bg-gradient-primary dropdown-toggle" type="button"
+                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>Séries</span>
+
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="#">1ª</a></li>
+                                    <li><a class="dropdown-item" href="javascript:;">2ª</a></li>
+                                    <li><a class="dropdown-item" href="javascript:;">3ª</a></li>
+                                </ul>
+                            </div>
+                            <h5 class="font-weight-bolder mb-0">
+                                14
+                                <span class="text-success text-sm font-weight-bolder">+3%</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <i class="fa fa-users text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card bg-gradient-dark">
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="numbers">
+                            <!-- <p class="text-sm mb-0 text-capitalize font-weight-bold text-white"> -->
+                            <div class="dropdown">
+                                <button class="btn bg-gradient-primary dropdown-toggle" type="button"
+                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>Professor (a) </span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="li_teacher">
+                                </ul>
+                            </div>
+                            <!--                      
+                </p> -->
+                        </div>
+                    </div>
+
+                    <div class="col-4 text-end">
+                        <!-- <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                <a href="#" title="Novo professor"><i class="fas fa-user"></i> </a>
+                
+
+                
+                <button class="btn bg-gradient-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                      Professor(a)
+                    </button>
+                
+              </div> -->
+                        <a class="btn btn-icon btn-2 bg-gradient-primary" onclick="addTeacher()" data-bs-toggle="modal"
+                            data-bs-target="#addTeacherModal">
+                            <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
+
+                        </a>
+                    </div>
+                    <div class="row">
+                        <h6 class="text-white font-weight-bolder mb-0">
+                            <span id="nameTeacherButton" class="text-opacity-75">Atualizando . . . </span>
+                            <span id="amount_teachers" class="text-success text-sm font-weight-bolder text-end"></span>
+                        </h6>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="numbers">
+                            <div class="dropdown">
+                                <button class="btn bg-gradient-primary dropdown-toggle" type="button"
+                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span>Horários</span>
+
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="javascript:;">Tibério Mendonça</a></li>
+                                    <li><a class="dropdown-item" href="javascript:;">Mário Cortella</a></li>
+                                    <li><a class="dropdown-item" href="javascript:;">Marcos Villa</a></li>
+                                </ul>
+                            </div>
+                            <h5 class="font-weight-bolder mb-0">
+                                30
+                                <span class="text-success text-sm font-weight-bolder">+5%</span>
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <i class="fas fa-th text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

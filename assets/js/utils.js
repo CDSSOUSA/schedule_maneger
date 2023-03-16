@@ -1,6 +1,17 @@
 // var titleSuccess = '<strong class="me-auto">Parabéns!</strong>';
 // var bodySuccess = ' Operação realizada com sucesso';
 // var success = 'success';
+const URL_BASE = 'http://localhost/gerenciador-horario/public';
+const URIS = {
+    teacher : {
+        create: "teacher/create",
+        update: "teacher/update",
+        delete: "teacher/del"
+    },
+    schedule: {
+        delete: "horario/api/del"
+    }
+}
 
 var checkTodos = $(".checkTodos");
 checkTodos.click(function () {
@@ -177,22 +188,29 @@ const convertSituation = (situation) => {
 
 const loadToast = (title, body, status) => {
 
-    let toast = {
-        title: title,
-        message: body,
-        status: status,
-        timeout: 1000
-    }
-    Toast.create(toast);
-    Toast.setPlacement(TOAST_PLACEMENT.MIDDLE_CENTER);
-    Toast.setTheme(TOAST_THEME.DARK);
-    Toast.enableTimers(false);
+    // let toast = {
+    //     title: title,
+    //     message: body,
+    //     status: status,
+    //     timeout: 8000
+    // }
+    // Toast.create(toast);
+    // Toast.setPlacement(TOAST_PLACEMENT.MIDDLE_CENTER);
+    // Toast.setTheme(TOAST_THEME.DARK);
+    // Toast.enableTimers(false);
     // $('.toast').on('hidden.bs.toast', e => {
     //     $(e.currentTarget).remove();
     //     //location.reload();
     //     //listYearSchool();
     //     //stopLoad();
     // });
+    new bootstrap.Toast(document.querySelector('#basicToast'), {
+        animation: true,
+        autohide: true,
+        delay: 2000,        
+      }).show();
+    //$('#basicToast').toast('show',{delay: 2000});
+    // $('#basicToast').toast('show');
 }
 
 const validateErros = (errors, locale) => {
@@ -204,7 +222,9 @@ const validateErros = (errors, locale) => {
 }
 
 const writeZero = (values) => {
+    Number(values)
     let a = values.length
+    console.log(a)
     if (a <= 1) {
         return `0${values}`;
     }
