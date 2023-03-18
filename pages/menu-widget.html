@@ -77,9 +77,10 @@
                         <div class="numbers">
                             <!-- <p class="text-sm mb-0 text-capitalize font-weight-bold text-white"> -->
                             <div class="dropdown">
-                                <button class="btn bg-gradient-primary dropdown-toggle" type="button"
+                                <button class="btn bg-gradient-primary dropdown-toggle position-relative" type="button"
                                     id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span>Professor (a) </span>
+                                    <span id="amount_teachers" class="badge text-bg-success position-absolute top-0 start-100 translate-middle rounded-pill">5</span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="li_teacher">
                                 </ul>
@@ -102,14 +103,13 @@
               </div> -->
                         <a class="btn btn-icon btn-2 bg-gradient-primary" onclick="addTeacher()" data-bs-toggle="modal"
                             data-bs-target="#addTeacherModal">
-                            <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
-
+                            <span class="btn-inner--icon" data-bs-toggle="tooltip" data-bs-title="Novo professor"><i class="fas fa-user"></i></span>    
                         </a>
                     </div>
                     <div class="row">
                         <h6 class="text-white font-weight-bolder mb-0">
                             <span id="nameTeacherButton" class="text-opacity-75">Atualizando . . . </span>
-                            <span id="amount_teachers" class="text-success text-sm font-weight-bolder text-end"></span>
+                            <span id="" class="text-success text-sm font-weight-bolder text-end"></span>
                         </h6>
 
                     </div>

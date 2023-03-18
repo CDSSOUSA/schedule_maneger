@@ -101,7 +101,7 @@ function listRowDisciplines(data, idTeacher) {
                     <img src="${URL_BASE}/assets/img/${e.icone}" width="32px" class="me-3 border-radius-lg p-1" alt="spotify">
                 </div>
                 <div>                
-                    ${e.description}<br> ${e.amount} aula(s)
+                    ${e.description}<br> ${writeZero(e.amount)} aula(s)
                 </div>
             </div>
            
@@ -146,7 +146,7 @@ function listRowDisciplinesInput(data, idTeacher) {
                     <img src="../assets/img/${e.icone}" width="28px" class="me-2 border-radius-lg p-1" alt="">
                     </div>
                     <div class="my-auto">
-                    <h6 class="mb-0 text-sm text-white font-weight-bolder"> ${e.abbreviation}<br> ${e.amount} aula(s)</h6>
+                    <h6 class="mb-0 text-sm text-white font-weight-bolder"> ${e.abbreviation}<br> ${writeZero(e.amount)} aula(s)</h6>
                     </div>
                 </div> 
                 </label>        

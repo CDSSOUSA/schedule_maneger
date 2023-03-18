@@ -222,10 +222,10 @@ const validateErros = (errors, locale) => {
 }
 
 const writeZero = (values) => {
-    Number(values)
-    let a = values.length
-    console.log(a)
-    if (a <= 1) {
+    let value = String(values).length   
+  
+  
+    if (value <= 1) {
         return `0${values}`;
     }
     return values;
