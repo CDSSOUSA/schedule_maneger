@@ -6,6 +6,7 @@ var statusSuccess = TOAST_STATUS.SUCCESS;
 
 var idTeacherStorege = localStorage.getItem('idTeacher')
 
+
 if (idTeacherStorege == null) {
     localStorage.setItem('idTeacher', localStorage.getItem('idEndTeacher'))
 }
@@ -50,6 +51,8 @@ async function listDisciplinesTeacher(idTeacher) {
             listAllocationTeacherDiscipline(idTeacher)
             listTeachers()
             listAllocationTeacherDisciplineAll(idTeacher)
+
+  
         }).catch(error => console.log(error))
 }
 
@@ -125,9 +128,12 @@ function listRowDisciplines(data, idTeacher) {
         <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="#" onclick="delTeacher(${idTeacher})" data-bs-toggle="modal" data-bs-target="#deleteTeacherModal"><i class="far fa-trash-alt me-2" aria-hidden="true"></i>Excluir</a>`
         document.getElementById('disciplineOption').innerHTML = `<a class="btn btn-link text-dark px-3 mb-0" href="#" onclick="addTeacherDiscipline(${idTeacher})"  data-bs-toggle="modal" data-bs-target="#addTeacherDisciplineModal"><i class="fas fa-plus text-dark me-2" aria-hidden="true"></i>Disciplina</a>`
 
-    }
+    }    
 
     document.getElementById('totalAmount').textContent = writeZero(amount)
+
+    localStorage.setItem('amountTotalTeacher', amount)
+
 
     return row;
 }
@@ -170,6 +176,7 @@ const listAllocationTeacherDiscipline = async (idTeacher) => {
 
             console.log(data.length);
             let total = data.length;
+            localStorage.setItem('amountAllocation', total)
             if (data) {
                 //editModal.show();
                 //document.getElementById('idEdit').value = data[0].id
@@ -178,7 +185,7 @@ const listAllocationTeacherDiscipline = async (idTeacher) => {
                 //document.getElementById('id_discipline').value = data[0].description
                 //document.getElementById('numeroAulas').value = data[0].amount
                 //document.getElementById('corDestaque').value = data[0].color
-                document.getElementById('totalAllocation').textContent = `${writeZero(Number(total))} de`
+                document.getElementById('totalAllocation').textContent = `${writeZero(total)} de`
                
                 document.getElementById('btn_print').setAttribute('onclick', `printReportTeacher(${idTeacher})`)
                    
@@ -235,6 +242,16 @@ const listAllocationTeacherDisciplineAll = async (idTeacher) => {
             }
         })
         .catch(error => console.log(error))
+
+        // if(localStorage.getItem('amountAllocation') >= localStorage.getItem('amountTotalTeacher')) {
+        //     document.getElementById('check').classList.remove('text-danger') 
+        //     document.getElementById('check').classList.add('text-success') 
+            
+        // } else {
+           
+        //     document.getElementById('check').classList.remove('text-success') 
+        //     document.getElementById('check').classList.add('text-danger') 
+        // }
 
 
 }
@@ -342,7 +359,7 @@ function loadDataSchedule(data) {
                     row += `<div class="avatar-group mt-2 text-center">
                                 <a href="#" onclick="delScheduleTeacher(${elem.id_schedule})" data-bs-toggle="modal" data-bs-target="#delScheduleTeacherModal" style="background-color:${elem.color};" class="btn text-white">
                                     ${elem.nameDiscipline}<br>
-                                    ${elem.description}ª${elem.classification} - ${convertShift(elem.shift)} - ${elem.id}
+                                    ${elem.description}ª${elem.classification} - ${convertShift(elem.shift)}
                                 </a>
                             </div>`
 

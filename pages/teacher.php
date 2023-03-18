@@ -41,7 +41,7 @@
 
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
+<body class="g-sidenav-show position-relative bg-gray-100">
 <div class="toast-container position-fixed top-50 start-50 p-3">
     <div id="basicToast" class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
