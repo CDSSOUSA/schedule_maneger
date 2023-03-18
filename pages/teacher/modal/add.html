@@ -5,7 +5,7 @@
         <div class="modal-body p-0">
           <div class="card card-plain">
             <div class="card-header pb-0 text-left">
-              <h3 class="font-weight-bolder text-primary text-gradient">Professor(a) ::</h3>
+              <h3 class="font-weight-bolder text-primary text-gradient"> + Professor (a) ::</h3>
               <p class="mb-0">Entre com os dados para registrar professor(a).</p>
             </div>
             <div class="card-body pb-3">
@@ -40,63 +40,9 @@
                   </div>
                 </div>
 
-                <?php
-                $array = [
-                  [
-                    'id' => 1,
-                    'abbreviation' => 'GEO',
-                    'icone' => 'icon-geografia.png'
-                  ],
-                  [
-                    'id' => 2,
-                    'abbreviation' => 'HIS',
-                    'icone' => 'icon-historia.png'
-                  ],
-                  [
-                    'id' => 3,
-                    'abbreviation' => 'PORT',
-                    'icone' => 'icon-portugues.png'
-                  ],
-                  [
-                    'id' => 4,
-                    'abbreviation' => 'ING',
-                    'icone' => 'icon-ingles.png'
-                  ],
-                  [
-                    'id' => 5,
-                    'abbreviation' => 'MAT',
-                    'icone' => 'icon-matematica.png'
-                  ]
-                ];
-                ?>
+                <label class="col-form-label">Disciplinas :: <span class="error invalid-feedback" id="fieldlertErrordisciplines"></span></label>
                 <div class="row" id="disciplines">
-                  <label class="col-form-label">Disciplinas :: <span class="error invalid-feedback" id="fieldlertErrordisciplines"></span></label>
 
-                  <?php foreach ($array as $key => $item) : ?>
-
-
-                    <div class="radio-toolbar" style="border-radius: 5px; margin: 3px; width:140px;">
-                      <!-- <div class="form-check-inline radio-toolbar text-white" style="background-color:#2e5b8e; border-radius: 5px; margin: 5px;"> -->
-                      <input class="form-check-inline" onfocus="eraseAlert('fieldlertErrordisciplines');" name="disciplines" value="<?= $item['id']; ?>" type="radio" id="flex<?= $item['id']; ?>">
-                      <label class="form-check-label" for="flex<?= $item['id']; ?>">
-
-                        <div class="d-flex">
-                          <div>
-                            <img src="../assets/img/<?= $item['icone']; ?>" width="28px" class="me-2 border-radius-lg p-1" alt="">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm text-white font-weight-bolder"> <?= $item['abbreviation']; ?></h6>
-                          </div>
-                        </div>
-                        <!-- <div class="rotulo"><span class="abbreviation font-weight-bold"><?php //$item->abbreviation; 
-                                                                                              ?></span>
-                                    <span class="icon-delete"><i class="fa fa-book" aria-hidden="true"></i>
-                                    </span>
-                                </div> -->
-
-                      </label>
-                    </div>
-                  <?php endforeach ?>
 
                 </div>
                 <div class="text-center">

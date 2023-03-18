@@ -74,11 +74,11 @@
 
   <?php //include('config.html'); 
   ?>
-  <?php include('teacher/modal/add.php'); ?>
+  <?php include('teacher/modal/add.html'); ?>
   <?php include('teacher/modal/edit.html'); ?>
   <?php include('teacher/modal/delete.html'); ?>
 
-  <?php include('teacher-discipline/modal/add.php'); ?>
+  <?php include('teacher-discipline/modal/add.html'); ?>
   <?php include('teacher-discipline/modal/edit.html'); ?>
   <?php include('teacher-discipline/modal/delete.html'); ?>
 

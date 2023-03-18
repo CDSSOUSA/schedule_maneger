@@ -51,10 +51,32 @@ async function listDisciplinesTeacher(idTeacher) {
             listAllocationTeacherDiscipline(idTeacher)
             listTeachers()
             listAllocationTeacherDisciplineAll(idTeacher)
+            listDisciplines()
 
   
         }).catch(error => console.log(error))
 }
+
+/* depois remover para o arquivo em discipline.js*/
+
+async function listDisciplines() {
+    await axios.get(`${URL_BASE}/discipline/list`)
+        .then(response => {
+            const data = response.data;
+            console.log(data);
+            document.querySelector("#disciplines").innerHTML = `${loadDataDisciplines(data,'disciplines')}`;   
+            document.querySelector("#disciplinesTeacher").innerHTML = `${loadDataDisciplines(data,'disciplinesTeacher')}`;   
+            
+            // data.forEach((elem)=>{
+                
+            // })
+        }
+        )
+        .catch(error => console.log(error))
+}
+
+
+
 
 //getElementById('nameTeacherButton').innerText = nameTeacher
 
@@ -642,7 +664,7 @@ async function editTeacherDiscipline(idTeacherDiscipline) {
                 if (data[0].amount_allocation == 0) {
                     document.getElementById('btn-delete').innerHTML = `<p class="mb-4 mx-auto">Deseja excluir a disciplina ? 
                     <a href="#" class="text-primary text-gradient font-weight-bold" onclick="delTeacherDiscipline(${idTeacherDiscipline})" data-bs-toggle="modal" data-bs-target="#delTeacherDisciplineModal">
-                        Clique aqui!
+                        <i class="fa fa-trash"></i> Clique aqui!
                     </a>
                     </p>`
                 } else {
@@ -930,55 +952,38 @@ async function getDataTeacherDiscipline(idTeacher) {
 }
 
 
-
-
-
-
-
-async function listDisciplines() {
-    await axios.get(`${URL_BASE}/discipline/list`)
-        .then(response => {
-            const data = response.data;
-            console.log(data);
-            document.querySelector("#tb_discipline > tbody").innerHTML = `${loadDataDisciplines(data)}`;
-        }
-        )
-        .catch(error => console.log(error))
-}
-
-function loadDataDisciplines(data) {
-    let ticket = '';
-    let row = "";
+function loadDataDisciplines(data,term) {
+    //let ticket = '';
+    let row = '';
 
     data.forEach((element, indice) => {
 
-        ticket = `<a href="#" class="btn btn-outline-dark" onclick="editDiscipline(${element.id})" title="Editar"><i class="fa fa-pen" aria-hidden="true"></i></a> `;
+        // ticket = `<a href="#" class="btn btn-outline-dark" onclick="editDiscipline(${element.id})" title="Editar"><i class="fa fa-pen" aria-hidden="true"></i></a> `;
 
-        //Define botão de excluir
-        if (!element.teacDisc) {
-            ticket += `<a href="#" class="btn btn-outline-dark" onclick="delDiscipline(${element.id})" title="Excluir"><i class="fa fa-trash" aria-hidden="true"></i></a>`
-        } else {
-            ticket += `<a href="#" class="btn btn-outline-dark disabled" title="Excluir"><i class="fa fa-trash" aria-hidden="true"></i></a>`
+        // //Define botão de excluir
+        // if (!element.teacDisc) {
+        //     ticket += `<a href="#" class="btn btn-outline-dark" onclick="delDiscipline(${element.id})" title="Excluir"><i class="fa fa-trash" aria-hidden="true"></i></a>`
+        // } else {
+        //     ticket += `<a href="#" class="btn btn-outline-dark disabled" title="Excluir"><i class="fa fa-trash" aria-hidden="true"></i></a>`
 
-        }
+        // }
         row +=
-            `<tr class="text-sm text-secondary mb-0">
-            
-                <td class="align-middle font-weight-bold">${indice + 1}</td>                
-                <td>
-                    <div class="d-flex px-2 w-35 b-radius-5 text-white font-size-8" style="background-color:#2e5b8e;">
-                        <div>
-                            <img src="${URL_BASE}/assets/img/${element.icone}" width="35px"  class="avatar avatar-sm me-3 border-radius-lg m-2" alt="spotify">
-                        </div>
-                        <div class="my-auto">
-                        <h6 class="mb-0 text-sm font-weight-bold">${element.description}</h6>
-                        </div>
-                    </div>
-                </td>
-                <td class="align-middle font-weight-bold">${element.abbreviation}</td>           
-                <td class="align-middle text-center font-weight-bold">${element.amount}</td>           
-                <td class="align-middle text-center">${ticket}</td>        
-            </tr>`;
+            ` <div class="radio-toolbar" style="width:150px;">
+             <input class="form-check-inline" onclick="eraseAlert(['fieldAlertErrorDisciplinesTechDisc','fieldlertErrordisciplines']);" name="${term}" value="${element.id}" type="radio" id="disciplines${element.id}${term}">
+            <label class="form-check-label" for="disciplines${element.id}${term}">
+
+              <div class="d-flex">
+                <div>
+                  <img src="../assets/img/${element.icone}" width="28px" class="me-2 border-radius-lg p-1" alt="">
+                </div>
+                <div class="my-auto">
+                  <h6 class="mb-0 text-sm text-white font-weight-bolder">${element.abbreviation}</h6>
+                </div>
+              </div>
+              
+
+            </label>
+          </div>`;
 
     });
     return row;
