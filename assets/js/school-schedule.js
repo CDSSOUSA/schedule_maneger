@@ -4,14 +4,30 @@ var titleSuccess = '<strong class="me-auto">Parabéns!</strong>';
 var bodySuccess = ' Operação realizada com sucesso';
 var success = 'success';
 
+
 const urlParams = window.location.pathname.split('/');
 //const shift = urlParams[5]
-const shift = 'T'
+//const shift = 'T'
 
-listSchedule();
+var shiftLocalStorage = localStorage.getItem('shift')
 
-async function listSchedule() {
-    document.getElementById('define-shift').textContent = convertShift(shift)
+
+ if (shiftLocalStorage == null) {
+     localStorage.setItem('shift', 'M')
+ }
+
+//let shift = listSchedule(localStorage.getItem('shift'));
+//localStorage.setItem('idTeacher', localStorage.getItem('idEndTeacher'))
+//let shiftLocalStorage = localStorage.setItem('shift',shiftEscolha)/
+//const shift = 
+
+var shiftGlobal = '';
+listSchedule(localStorage.getItem('shift'))
+
+async function listSchedule(shift) {
+    shiftGlobal = shift
+    document.getElementById('define-shift-heard').textContent = convertShift(shift)
+    document.getElementById('define-shift-menu').textContent = convertShift(shift)
     await axios.get(`${URL_BASE}/horario/api/list/${shift}`)
         .then(response => {
             const data = response.data;
@@ -40,6 +56,7 @@ async function listScheduleSeries(idSerie) {
         .then(response => {
             const data = response.data;
             console.log(data);
+
             document.querySelector("#tb_series_schedule > tbody").innerHTML = `${loadDataScheduleSerie(data)}`;
             document.getElementById('totalSchedule').textContent = writeZero(data.length)
             
@@ -47,7 +64,16 @@ async function listScheduleSeries(idSerie) {
             //document.querySelector("#tb_schedule > tbody").innerHTML = `${loadDataSchedule(data)}`;
             //loadDataTable(data)
             //document.getElementById('btn_print').setAttribute('href', `${URL_BASE}/report/series/${idSerie}`)
-            document.getElementById('btn_print_series_schedule').setAttribute('onclick', `printReport(${idSerie})`)
+         
+
+            if(data.length == 0 ){
+                document.getElementById('btn_print_series_schedule').classList.add('disabled')
+            }
+            else {
+                document.getElementById('btn_print_series_schedule').setAttribute('onclick', `printReport(${idSerie})`)
+                document.getElementById('btn_print_series_schedule').classList.remove('disabled')
+                
+            }
 
             //onclick = "printReport()"
         }
@@ -66,7 +92,7 @@ function loadDataScheduleSerie(data) {
     for (let ps = 1; ps < 7; ps++) {
         row += `<tr>
                     <th scope="row" class="text-center align-middle">
-                            ${ps}ª aula <p class="text-sm text-gray">${translateSchedule(ps, shift)}           
+                            ${ps}ª aula <p class="text-sm text-gray">${translateSchedule(ps, shiftGlobal)}           
                     </th>`
 
         // let dayShow = ps === 1 ? convertDayWeek(dw) : '';           
@@ -124,9 +150,10 @@ function loadDataSchedule(data) {
             let rowColor = dw % 2 === 0 ? 'table-secondary' : 'table-success'
 
             row += `<tr class="${rowColor}"><th scope="row">${dayShow}</th>
-            <th scope="row" class="text-center align-middle">${ps}ª aula <p class="text-sm text-gray">${translateSchedule(ps, shift)}</p></th>`
+            <th scope="row" class="text-center align-middle">${ps}ª aula <p class="text-sm text-gray">${translateSchedule(ps, shiftGlobal)}</p></th>`
             data.forEach((elem, indice) => {
-                row += `<td id="row${ps}${dw}${elem.id}" class="text-center align-middle">${listDPS(elem.id, dw, ps, shift)}</td>`
+               
+                row += `<td id="row${ps}${dw}${elem.id}" class="text-center align-middle">${listDPS(elem.id, dw, ps, elem.shift)}</td>`
             })
             row += `</tr>`
 
@@ -158,7 +185,9 @@ function loadDataSchedule(data) {
     return row;
 }
 
+
 function listDPS(idSerie, day, position, shift) {
+
     axios.get(`${URL_BASE}/horario/api/listDPS/${idSerie}/${day}/${position}/${shift}`)
         .then(response => {
 
@@ -175,7 +204,7 @@ function listDPS(idSerie, day, position, shift) {
                 <h6 class="mb-0 text-sm font-weight-bold"> VAGO</h6>
             </div>
         </div>`
-            } else if (response.data != 'livre') {
+            } else if (response.data != 'livre') {             
                 console.log(response.data);
                 document.getElementById(`row${position}${day}${idSerie}`).innerHTML = `
             <div class="w-150 text-center align-items-center" style="display: flex;
@@ -213,6 +242,8 @@ function listDPS(idSerie, day, position, shift) {
 
         })
         .catch(error => console.log(error))
+
+      
 
 }
 
@@ -296,7 +327,7 @@ if (addScheduleForm) {
                     loadToast();
                     //loada();
                     //location.reload();
-                    listSchedule();
+                    listSchedule(dataForm.get('nShift'));
                 }
             })
             .catch(error => console.log(error))
@@ -346,7 +377,7 @@ async function delScheduleTeacher(id) {
                     ;
                 document.getElementById('positonDel').innerText = `${data.position} ª AULA - `
                 document.getElementById('dayWeekDel').innerText = `${convertDayWeek(data.dayWeek, true)}`
-                //document.getElementById('shiftDel').innerText = convertShift(data.shift)
+                document.getElementById('shiftDel').value = data.shift
                 document.getElementById('idScheduleTeacherDel').value = data.id_teacher
                 document.getElementById('color').style.backgroundColor = data.color
                 //document.getElementById('headerScheduleRemove').style.backgroundColor = data.color
@@ -389,7 +420,7 @@ if (deleteScheduleForm) {
                     localStorage.setItem('idTeacher', dataForm.get('idTeacher'))
 
                     loadToast();
-                    listSchedule()
+                    listSchedule(dataForm.get('shiftDel'))
 
                 }
             })
@@ -467,8 +498,8 @@ async function listSeries(shift) {
 
 function loadDataSeries(data) {
     let row = "";
-    row += `<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dias</th>
-    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aulas</th>`
+    row += `<th class="text-uppercase text-secondary text-xxs font-weight-bolder text-dark">Dias</th>
+    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-dark ps-2">Aulas</th>`
 
     console.table(data)
 

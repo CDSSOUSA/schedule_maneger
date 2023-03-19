@@ -1193,7 +1193,7 @@ async function delScheduleTeacher(id) {
                     ;
                 document.getElementById('positonDel').innerText = `${data.position} ª AULA - `
                 document.getElementById('dayWeekDel').innerText = `${convertDayWeek(data.dayWeek,true)}`
-                //document.getElementById('shiftDel').innerText = convertShift(data.shift)
+                document.getElementById('shiftDel').value = data.shift
                 document.getElementById('idScheduleTeacherDel').value = data.id_teacher
                 document.getElementById('color').style.backgroundColor = data.color
                 //document.getElementById('headerScheduleRemove').style.backgroundColor = data.color

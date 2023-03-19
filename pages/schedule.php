@@ -42,25 +42,8 @@
 </head>
 
 <body class="g-sidenav-show position-relative bg-gray-100">
-<div class="toast-container position-fixed top-0 end-0 p-3">
-    <div id="basicToast" class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <span class="status-icon bi me-2 text-success bi-check-circle-fill" aria-hidden="true"></span>
-        <strong class="me-auto">Parabéns</strong>
-        <!-- <small class="text-muted"></small> -->
-        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="d-flex">
-        <div class="toast-body">
-          Operação realizada com sucesso!
-        </div>
 
-      </div>
-    </div>
-  </div>
   <?php include('header.html'); ?>
-  
-
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
     <?php include('breadcrumb.html'); ?>
@@ -73,7 +56,7 @@
   </main>
 
   <?php //include('config.html'); 
-  ?>  
+  ?>
 
   <?php include('schedule/modal/add.html'); ?>
   <?php include('schedule/modal/delete.html'); ?>
@@ -93,10 +76,29 @@
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
   <script src="../assets/js/axios.min.js"></script>
   <script src="../assets/js/utils.js"></script>
-  
-  <script src="../assets/js/school-schedule.js"></script>
-  
 
+  <script src="../assets/js/school-schedule.js"></script>
+
+  <!-- Position it: -->
+  <!-- - `.toast-container` for spacing between toasts -->
+  <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
+  <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
+  <div class="toast-container position-absolute top-0 end-0" style="padding-top: 35px;">
+    <div id="basicToast" class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <span class="status-icon bi me-2 text-success bi-check-circle-fill" aria-hidden="true"></span>
+        <strong class="me-auto">Parabéns</strong>
+        <!-- <small class="text-muted"></small> -->
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="d-flex">
+        <div class="toast-body">
+          Operação realizada com sucesso!
+        </div>
+
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
