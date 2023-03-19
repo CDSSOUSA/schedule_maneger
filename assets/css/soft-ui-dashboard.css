@@ -24556,7 +24556,7 @@ html {
 }
 
 .table {
-  border-collapse: inherit;
+  /* border-collapse: inherit; */
 }
 
 .table thead th {

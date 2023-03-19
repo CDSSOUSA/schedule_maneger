@@ -1,0 +1,49 @@
+<div class="modal fade" id="listScheduleSeriesModal" tabindex="-1" role="dialog"
+  aria-labelledby="listScheduleSeriesModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="card card-plain">
+          <div class="card-header pb-0 text-left">
+            <h5 class="font-weight-bolder text-primary text-gradient">Quadro de Horário ::</h5>            
+            <h3 id="descriptionSerieFake" class="font-weight-bolder text-primary text-gradient"></h3>
+          </div>          
+          <div class="card-header pb-0">
+            <div class="row">
+              <div class="col-lg-6 col-7">
+                <h6></h6>
+                <p class="text-sm mb-0">
+                  <i id="check" class="fa fa-check" aria-hidden="true"></i>
+                  <span id="totalSchedule" class="font-weight-bold ms-1">...</span> aulas
+                </p>
+              </div>
+              <div class="col-lg-6 col-5 my-auto text-end">
+              <a id="btn_print_series_schedule" class="btn btn-outline-primary" data-bs-toggle="tooltip" data-bs-title="Imprimir hórario" 
+              data-bs-placement="left" title="Imprimir" target="_blank"> 
+                      <i class="fa fa-print"></i> Imprimir </a>                  
+              </div>
+            </div>
+          </div>
+          <div class="card-body pb-3">           
+              <div class="table-responsive">
+                <table id="tb_series_schedule" class="table text-center align-items-center mb-0">
+                  <thead>
+                    <tr class="text-center align-items-center">
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Dias|Aulas</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Segunda</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Terça</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quarta</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quinta</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Sexta</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
