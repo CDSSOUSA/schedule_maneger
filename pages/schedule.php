@@ -83,7 +83,7 @@
   <!-- - `.toast-container` for spacing between toasts -->
   <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
   <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
-  <div class="toast-container position-absolute top-0 end-0" style="padding: 75px;">
+  <div class="toast-container position-absolute top-0 end-0">
     <div id="basicToast" class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <span class="status-icon bi me-2 text-success bi-check-circle-fill" aria-hidden="true"></span>

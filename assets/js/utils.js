@@ -32,6 +32,9 @@ const validateArea = (area) => {
     if(trecho == 'schedule') {
 
         document.getElementById('card-schedule').innerHTML = `
+        <div class="card bg-gradient-dark">
+        <div class="card-body p-3">
+            <div class="row">
         <div class="col-8">
             <div class="numbers">
                 <div class="dropdown">
@@ -54,13 +57,19 @@ const validateArea = (area) => {
             <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                 <i class="fas fa-th text-lg opacity-10" aria-hidden="true"></i>
             </div>
+        </div>
+        </div>
+        </div>
         </div>`
 
 
         document.getElementById('menu-schedule').classList.add('text-decoration-underline', 'fw-bold');
     } else if(trecho == 'teacher') {
 
-        document.getElementById('card-teacher').innerHTML = `<div class="col-8">
+        document.getElementById('card-teacher').innerHTML = ` <div class="card bg-gradient-dark">
+        <div class="card-body p-3">
+            <div class="row">
+            <div class="col-8">
         <div class="numbers">
             <div class="dropdown">
                 <button class="btn bg-gradient-primary dropdown-toggle position-relative" type="button"
@@ -85,7 +94,7 @@ const validateArea = (area) => {
             <span id="nameTeacherButton" class="text-opacity-75 text-success">Atualizando . . . </span>
             <span id="" class="text-success text-sm font-weight-bolder text-end"></span>
         </h6>
-    </div>`
+    </div></div></div></div>`
 
 
         document.getElementById('menu-teacher').classList.add('text-decoration-underline', 'fw-bold');
