@@ -4,11 +4,6 @@ var titleSuccess = '<strong class="me-auto">Parabéns!</strong>';
 var bodySuccess = ' Operação realizada com sucesso';
 var success = 'success';
 
-
-const urlParams = window.location.pathname.split('/');
-//const shift = urlParams[5]
-//const shift = 'T'
-
 var shiftLocalStorage = localStorage.getItem('shift')
 
 
@@ -91,9 +86,9 @@ function loadDataScheduleSerie(data) {
     // let rowColor = '';
     for (let ps = 1; ps < 7; ps++) {
         row += `<tr>
-                    <th scope="row" class="text-center align-middle">
+                    <td scope="row" class="text-center align-middle">
                             ${ps}ª aula <p class="text-sm text-gray">${translateSchedule(ps, shiftGlobal)}           
-                    </th>`
+                    </td>`
 
         // let dayShow = ps === 1 ? convertDayWeek(dw) : '';           
         // let rowColor = dw % 2 === 0 ? 'table-secondary' : 'table-success'
@@ -147,14 +142,16 @@ function loadDataSchedule(data) {
         for (let ps = 1; ps < 7; ps++) {
 
             let dayShow = ps === 3 ? convertDayWeek(dw) : '';
+            let dayShowBorder = ps === 1 ? 'table-border-top' : '';
+            let dayShowBorderBottom = ps === 6 ? 'table-border-bodttom' : '';
             let rowColor = dw % 2 === 0 ? 'table-secondary' : 'table-success'
 
-            row += `<tr class="${rowColor}"><th scope="row">${dayShow}</th>
-            <th scope="row" class="text-center align-middle">${ps}ª aula <p class="text-sm text-gray">${translateSchedule(ps, shiftGlobal)}</p></th>`
-            data.forEach((elem, indice) => {
-               
-                row += `<td id="row${ps}${dw}${elem.id}" class="text-center align-middle">${listDPS(elem.id, dw, ps, elem.shift)}</td>`
-            })
+            row += `<tr class="${rowColor}">
+                        <td scope="row" class="fw-bold ${dayShowBorder} ${dayShowBorderBottom} table-border-left">${dayShow}</td>
+                        <td scope="row" class="text-center align-middle table-border">${ps}ª aula <p class="text-sm text-gray">${translateSchedule(ps, shiftGlobal)}</p></td>`
+                            data.forEach((elem, indice) => {                            
+                                row += `<td id="row${ps}${dw}${elem.id}" class="text-center align-middle table-border">${listDPS(elem.id, dw, ps, elem.shift)}</td>`
+                            })
             row += `</tr>`
 
 
@@ -195,15 +192,17 @@ function listDPS(idSerie, day, position, shift) {
 
             if (response.data == 'vago') {
                 document.getElementById(`row${position}${day}${idSerie}`).innerHTML = `
-            
-            <div class="d-flex m-1 p-2 w-120" style="background-color: transparent; border: 1px solid #9a9a9c; color:black; border-radius: 5px;" data-toggle="tooltip" data-placement="top" title="Aguardando alocação!">
+                <div class="w-150 text-center align-items-center" style="display: flex;
+                justify-content: center;">
+            <div class="m-1 p-2 w-120" style="background-color: transparent; border: 1px solid #9a9a9c; color:black; border-radius: 5px; display: flex;
+            justify-content: center;" data-toggle="tooltip" data-placement="top" title="Aguardando alocação!">
             <div>
                 <img src="${URL_BASE}/assets/img/discipline-vague.png" width="28px" class="me-2 border-radius-lg m-1" alt="spotify">
             </div>
             <div class="my-auto">
                 <h6 class="mb-0 text-sm font-weight-bold"> VAGO</h6>
             </div>
-        </div>`
+        </div></div>`
             } else if (response.data != 'livre') {             
                 console.log(response.data);
                 document.getElementById(`row${position}${day}${idSerie}`).innerHTML = `
@@ -498,8 +497,8 @@ async function listSeries(shift) {
 
 function loadDataSeries(data) {
     let row = "";
-    row += `<th class="text-uppercase text-secondary text-xxs font-weight-bolder text-dark">Dias</th>
-    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-dark ps-2">Aulas</th>`
+    row += `<td class="text-uppercase text-secondary text-xxs font-weight-bolder text-dark">Dias</td>
+    <td class="text-uppercase text-secondary text-xxs font-weight-bolder text-dark ps-2">Aulas</td>`
 
     console.table(data)
 
@@ -507,7 +506,7 @@ function loadDataSeries(data) {
         
 
         row +=
-            `<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+            `<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
             <div class="text-center align-items-center" style="display: flex;
             justify-content: center;">
                 <a href="#" onclick="listScheduleSeries(${element.id})" data-bs-toggle="modal" data-bs-target="#listScheduleSeriesModal" title="Imprimir"  class="btn btn-outline-primary">
@@ -516,7 +515,7 @@ function loadDataSeries(data) {
                     </span>
                 </a> </div>   
                 
-            </th>`;
+            </td>`;
 
     });
     return row;

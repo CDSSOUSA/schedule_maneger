@@ -13,6 +13,17 @@ const URIS = {
     }
 }
 
+const urlParams = window.location.pathname.split('/');
+//const shift = urlParams[5]
+//const shift = 'T'
+console.log(urlParams[4])
+
+if(urlParams[4] == 'schedule.php') {
+    document.getElementById('menu-schedule').classList.add('text-decoration-underline', 'fw-bold');
+} else {
+    document.getElementById('menu-teacher').classList.add('text-decoration-underline', 'fw-bold');
+}
+
 var checkTodos = $(".checkTodos");
 checkTodos.click(function () {
     document.querySelector('.tickets').textContent = ''

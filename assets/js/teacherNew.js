@@ -361,12 +361,12 @@ function loadDataSchedule(data) {
     // let rowColor = '';
     for (let ps = 1; ps < 7; ps++) {
         row += `<tr>
-           <th scope="row" class="text-center align-middle w-120">
+           <td scope="row" class="text-center align-middle w-120">
            ${ps}ª aula <p class="text-sm text-gray">${translateSchedule(ps, 'M')} 
            <br>ou<br>
           ${translateSchedule(ps, 'T')}</p>
            
-           </th>`
+           </td>`
 
         // let dayShow = ps === 1 ? convertDayWeek(dw) : '';           
         // let rowColor = dw % 2 === 0 ? 'table-secondary' : 'table-success'

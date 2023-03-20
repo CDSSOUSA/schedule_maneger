@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="../assets/css/bootstrap-toaster.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
+
 </head>
 
 <body class="g-sidenav-show position-relative bg-gray-100">
@@ -63,7 +64,7 @@
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
-    <?php include('breadcrumb.html'); ?>
+    <?php //include('breadcrumb.html'); ?>
     <div class="container-fluid py-4">
       <?php include('menu-widget.html'); ?>
       <?php include('teacher/content.html'); ?>

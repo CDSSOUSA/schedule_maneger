@@ -46,9 +46,9 @@
   <?php include('header.html'); ?>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
-    <?php include('breadcrumb.html'); ?>
+    <?php //include('breadcrumb.html'); ?>
     <div class="container-fluid py-4">
-      <?php include('menu-widget -schedule.html'); ?>
+      <?php include('menu-widget-schedule.html'); ?>
       <?php include('schedule/content.html'); ?>
       <div class="row my-4"></div>
       <?php include('footer.html'); ?>
@@ -83,7 +83,7 @@
   <!-- - `.toast-container` for spacing between toasts -->
   <!-- - `.position-absolute`, `top-0` & `end-0` to position the toasts in the upper right corner -->
   <!-- - `.p-3` to prevent the toasts from sticking to the edge of the container  -->
-  <div class="toast-container position-absolute top-0 end-0" style="padding-top: 35px;">
+  <div class="toast-container position-absolute top-0 end-0" style="padding: 75px;">
     <div id="basicToast" class="toast align-items-center text-white bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <span class="status-icon bi me-2 text-success bi-check-circle-fill" aria-hidden="true"></span>
