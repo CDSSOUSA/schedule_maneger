@@ -66,7 +66,7 @@
     <!-- Navbar -->
     <?php //include('breadcrumb.html'); ?>
     <div class="container-fluid py-4">
-      <?php include('menu-widget.html'); ?>
+      <?php include('menu-widget-schedule.html'); ?>
       <?php include('teacher/content.html'); ?>
       <div class="row my-4"></div>
       <?php include('footer.html'); ?>

@@ -1,4 +1,5 @@
 <div class="row">
+
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
             <div class="card-body p-3">
@@ -69,13 +70,12 @@
     </div>
 
 
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" id="card-teacher">
         <div class="card bg-gradient-dark">
             <div class="card-body p-3">
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <!-- <p class="text-sm mb-0 text-capitalize font-weight-bold text-white"> -->
                             <div class="dropdown">
                                 <button class="btn bg-gradient-primary dropdown-toggle position-relative" type="button"
                                     id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -84,23 +84,11 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="li_teacher">
                                 </ul>
-                            </div>
-                            <!--                      
-                </p> -->
+                            </div>                            
                         </div>
                     </div>
 
                     <div class="col-4 text-end">
-                        <!-- <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                <a href="#" title="Novo professor"><i class="fas fa-user"></i> </a>
-                
-
-                
-                <button class="btn bg-gradient-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                      Professor(a)
-                    </button>
-                
-              </div> -->
                         <a class="btn btn-icon btn-2 bg-gradient-primary" onclick="addTeacher()" data-bs-toggle="modal"
                             data-bs-target="#addTeacherModal">
                             <span class="btn-inner--icon" data-bs-toggle="tooltip" data-bs-title="Novo professor"><i class="fas fa-user"></i></span>    
@@ -111,7 +99,6 @@
                             <span id="nameTeacherButton" class="text-opacity-75 text-success">Atualizando . . . </span>
                             <span id="" class="text-success text-sm font-weight-bolder text-end"></span>
                         </h6>
-
                     </div>
                 </div>
             </div>
@@ -147,4 +134,5 @@
             </div>
         </div>
     </div>
+
 </div>
