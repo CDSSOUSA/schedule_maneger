@@ -1,8 +1,8 @@
 var divLoad = document.querySelector('#load');
 var divLoader = document.querySelector('#loader');
-var titleSuccess = 'Parabéns!';
-var bodySuccess = 'Operação realizada com sucesso.';
-var statusSuccess = TOAST_STATUS.SUCCESS;
+// var typeSuccess = 'success';
+// var titleSuccess = '<strong class="me-auto">Parabéns!</strong>';
+// var messageSuccess = '<i class="bi bi-hand-thumbs-up-fill"></i> Operação realizada com sucesso!';
 
 var idTeacherStorege = localStorage.getItem('idTeacher')
 
@@ -494,7 +494,7 @@ if (addTeacherForm) {
                     localStorage.removeItem('idEndTeacher');
                     localStorage.setItem('idEndTeacher', response.data.id)
                     localStorage.setItem('idTeacher', response.data.id)
-                    loadToast(titleSuccess, bodySuccess, statusSuccess);
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
 
                     listDisciplinesTeacher(localStorage.getItem('idTeacher'))
 
@@ -549,7 +549,7 @@ if (editTeacherForm) {
                     localStorage.removeItem('idEndTeacher');
                     localStorage.setItem('idEndTeacher', dataForm.get('id'))
                     localStorage.setItem('idTeacher', dataForm.get('id'))
-                    loadToast(titleSuccess, bodySuccess, statusSuccess);
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
 
                     listDisciplinesTeacher(localStorage.getItem('idTeacher'))
                 }
@@ -631,7 +631,7 @@ if (addFormTeacDisc) {
                     localStorage.removeItem('idEndTeacher');
                     localStorage.setItem('idEndTeacher', dataForm.get('id_teacher'))
                     localStorage.setItem('idTeacher', dataForm.get('id_teacher'))
-                    loadToast(titleSuccess, bodySuccess, statusSuccess);
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
 
                     listDisciplinesTeacher(localStorage.getItem('idTeacher'))
 
@@ -707,7 +707,7 @@ if (editTeacherDisciplineForm) {
                     localStorage.removeItem('idEndTeacher');
                     localStorage.setItem('idEndTeacher', dataForm.get('id_teacher'))
                     localStorage.setItem('idTeacher', dataForm.get('id_teacher'))
-                    loadToast(titleSuccess, bodySuccess, statusSuccess);
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
 
                     listDisciplinesTeacher(localStorage.getItem('idTeacher'))
 
@@ -816,7 +816,7 @@ if (addAllocationForm) {
                     localStorage.removeItem('idEndTeacher');
                     localStorage.setItem('idEndTeacher', dataForm.get('id_teacher'))
                     localStorage.setItem('idTeacher', dataForm.get('id_teacher'))
-                    loadToast(titleSuccess, bodySuccess, statusSuccess);
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
 
                     listDisciplinesTeacher(localStorage.getItem('idTeacher'))
 
@@ -897,7 +897,7 @@ if (delAllocationTeacherForm) {
                     localStorage.removeItem('idEndTeacher');
                     localStorage.setItem('idEndTeacher', dataForm.get('id_teacher'))
                     localStorage.setItem('idTeacher', dataForm.get('id_teacher'))
-                    loadToast(titleSuccess, bodySuccess, statusSuccess);
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
 
                     listDisciplinesTeacher(localStorage.getItem('idTeacher'))
                 }
@@ -1056,7 +1056,7 @@ if (deleteForm) {
                     localStorage.setItem('idEndTeacher', dataForm.get('idTeacher'))
                     localStorage.setItem('idTeacher', dataForm.get('idTeacher'))
 
-                    loadToast(titleSuccess, bodySuccess, statusSuccess);
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
                     listDisciplinesTeacher(localStorage.getItem('idTeacher'))
 
                 }
@@ -1120,7 +1120,7 @@ if (deleteTeacherForm) {
                     localStorage.setItem('idEndTeacher', idLast)
                     localStorage.setItem('idTeacher', idLast)
 
-                    loadToast(titleSuccess, bodySuccess, statusSuccess);
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
                     listDisciplinesTeacher(localStorage.getItem('idTeacher'))
 
                 }
@@ -1236,7 +1236,7 @@ if (deleteScheduleForm) {
                     localStorage.setItem('idEndTeacher', dataForm.get('idTeacher'))
                     localStorage.setItem('idTeacher', dataForm.get('idTeacher'))
 
-                    loadToast(titleSuccess, bodySuccess, statusSuccess);
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
                     listDisciplinesTeacher(localStorage.getItem('idTeacher'))
 
                 }

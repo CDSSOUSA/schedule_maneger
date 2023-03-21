@@ -1,6 +1,7 @@
-// var titleSuccess = '<strong class="me-auto">Parabéns!</strong>';
-// var bodySuccess = ' Operação realizada com sucesso';
-// var success = 'success';
+var typeSuccess = 'success';
+var titleSuccess = '<strong class="me-auto">Parabéns!</strong>';
+var messageSuccess = '<i class="bi bi-hand-thumbs-up-fill"></i> Operação realizada com sucesso!';
+
 const URL_BASE = 'http://localhost/gerenciador-horario/public';
 const URIS = {
     teacher : {
@@ -289,7 +290,7 @@ const convertSituation = (situation) => {
     return 'BLOQUEADO';
 }
 
-const loadToast = (title, body, status) => {
+const loadToast = (type, title, message) => {
 
     // let toast = {
     //     title: title,
@@ -307,13 +308,21 @@ const loadToast = (title, body, status) => {
     //     //listYearSchool();
     //     //stopLoad();
     // });
-    new bootstrap.Toast(document.querySelector('#basicToast'), {
-        animation: true,
-        autohide: true,
-        delay: 2000,        
-      }).show();
+    // new bootstrap.Toast(document.querySelector('#basicToast'), {
+    //     animation: true,
+    //     autohide: true,
+    //     delay: 2000,        
+    //   }).show();
     //$('#basicToast').toast('show',{delay: 2000});
     // $('#basicToast').toast('show');
+
+    cuteAlert({
+        type:type,
+        title: title,
+        message: message,
+        buttonText: false,
+        timer: 2000
+    })
 }
 
 const validateErros = (errors, locale) => {

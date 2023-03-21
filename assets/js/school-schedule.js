@@ -1,8 +1,8 @@
 // var divLoad = document.querySelector('#load');
 // var divLoader = document.querySelector('#loader');
-var titleSuccess = '<strong class="me-auto">Parabéns!</strong>';
-var bodySuccess = ' Operação realizada com sucesso';
-var success = 'success';
+// var typeSuccess = 'success';
+// var titleSuccess = '<strong class="me-auto">Parabéns!</strong>';
+// var messageSuccess = '<i class="fa fa-user"></i> Operação realizada com sucesso!';
 
 var shiftLocalStorage = localStorage.getItem('shift')
 
@@ -323,7 +323,7 @@ if (addScheduleForm) {
                     // load();
                     // //console.log(response.data)
                     addScheduleModal.hide();
-                    loadToast();
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
                     //loada();
                     //location.reload();
                     listSchedule(dataForm.get('nShift'));
@@ -418,7 +418,7 @@ if (deleteScheduleForm) {
                     localStorage.setItem('idEndTeacher', dataForm.get('idTeacher'))
                     localStorage.setItem('idTeacher', dataForm.get('idTeacher'))
 
-                    loadToast();
+                    loadToast(typeSuccess, titleSuccess, messageSuccess);
                     listSchedule(dataForm.get('shiftDel'))
 
                 }

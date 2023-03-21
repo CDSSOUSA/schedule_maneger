@@ -38,7 +38,7 @@
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../assets/css/bootstrap-toaster.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
+  <link id="pagestyle" href="../assets/css/cute-alert.css" rel="stylesheet" />
 
 </head>
 
@@ -104,6 +104,7 @@
   <script src="../assets/js/axios.min.js"></script>
   <script src="../assets/js/utils.js"></script>
   <script src="../assets/js/teacherNew.js"></script>
+  <script src="../assets/js/cute-alert.js"></script>
   
 
 </body>
